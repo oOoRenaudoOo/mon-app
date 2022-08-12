@@ -29,7 +29,7 @@
 
 // component fonctionnel
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Picture from "./Picture";
 
 export default function Pictures() {
@@ -73,10 +73,37 @@ export default function Pictures() {
     setImage(event.target.value);
   }
 
+  // useRef  ne recharge pas le composant quand sa valeur est modifiee, sa valeur n'est pas affichee
+  const fruitRef = useRef(null);
+
+  // useState recharge le composant quand la valeur est modifiee, sa valeur est affichee
+  const [fruitState, setFruitState] = useState(null);
+
+  // useEffect(() => {
+  //   inputToFocus.current.focus();
+  //   // console.log(inputToFocus);
+  // });
+
   return (
-    <div className="mx-auto">
+    <div className="container mx-auto">
       <div className="flex items-center justify-around">
         <ImagesComponent />
+      </div>
+
+      <button
+        onClick={() => {
+          setFruitState("orange");
+          fruitRef.current = "pomme";
+        }}
+      >
+        Cliquer ici pour generer un fruit
+      </button>
+
+      <div>
+        {/* recharge du composant quand fruitState est modifie, affichage de
+        fruitRef */}
+        {fruitState}
+        {fruitRef.current}
       </div>
 
       <div className="mt-5">
