@@ -3,7 +3,7 @@
 // composant fonctionnel
 
 import React, { useEffect, useRef, useState } from "react";
-import Picture from "./components/Picture";
+import Pictures from "./components/Pictures";
 
 function App() {
   const [title, setTile] = useState("Coucou les amis");
@@ -36,7 +36,7 @@ function App() {
       >
         Click
       </button>
-      {show ? <Picture /> : null}
+      {show ? <Pictures /> : null}
     </div>
   );
 }
